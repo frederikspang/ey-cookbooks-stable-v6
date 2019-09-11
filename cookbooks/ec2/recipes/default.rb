@@ -32,7 +32,9 @@ if data_mounted.stdout == ""
         not_if "e2label #{node['data_volume'].device}"
       end
 
-      execute "e2fsck -f -y #{node['data_volume'].device}"
+      execute "e2fsck -f -y #{node['data_volume'].device}" do
+        ignore_failure true
+      end
 
       mount "/data" do
         fstype node['data_filesystem']
