@@ -32,6 +32,8 @@ if data_mounted.stdout == ""
         not_if "e2label #{node['data_volume'].device}"
       end
 
+      raise "raise an error for debugging"
+      
       mount "/data" do
         fstype node['data_filesystem']
         device node['data_volume'].device
